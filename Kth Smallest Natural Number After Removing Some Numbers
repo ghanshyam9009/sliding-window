@@ -1,3 +1,6 @@
+https://www.geeksforgeeks.org/k-th-smallest-element-removing-integers-natural-numbers/
+
+
 Input : arr[] = { 1 } and k = 1.
 Output: 2
 Natural numbers are {1, 2, 3, 4, .... }
