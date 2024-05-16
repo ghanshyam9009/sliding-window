@@ -1,0 +1,45 @@
+Problem Statement
+Given a string s and an integer k, we need to find the length of the longest substring that can be formed by changing at most k characters to any other uppercase English character.
+
+Example
+Example 1:
+
+Input: s = "ABAB", k = 2
+Output: 4
+Explanation: Replace the two 'A's with two 'B's or vice versa.
+
+Example 2:
+
+Input: s = "AABABBA", k = 1
+Output: 4
+Explanation: Replace the one 'A' in the middle with 'B' and form "AABBBBA". The substring "BBBB" has the longest repeating letters, which is 4.
+
+
+
+class Solution {
+public:
+    int characterReplacement(string s, int k) {
+        unordered_map<char,int> m;
+        int n = s.size();
+        int ans = 0;
+        int i = 0, j = 0;
+        int curr = 0;
+        
+        while (j < n) {
+            m[s[j]]++;
+            curr = max(curr, m[s[j]]);
+     
+            while (j - i + 1 - curr > k) {
+                m[s[i]]--;
+                if (m[s[i]] == 0)
+                    m.erase(s[i]);
+                i++;
+            }
+            
+            ans = max(ans, j - i + 1);
+            j++;
+        }
+        
+        return ans;
+    }
+};
